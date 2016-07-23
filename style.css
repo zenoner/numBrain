@@ -42,18 +42,18 @@ div#clocktimer {
 
 }
 
-.score {
+#score {
   position: left;
-  float: left;
+  float: right;
   width: 80px;
   height: 80px;
   border: 1px red dotted;
   margin-left: 10px;
 }
 
-.heart {
+#heart {
   position: left;
-  float: right;
+  float: left;
   width: 80px;
   height: 80px;
   border: 1px red dotted;

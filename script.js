@@ -2,29 +2,47 @@
 
 
 $(document).ready(function() {
+//Test for empty array
+var arr = []
+var selectNum = 0
+//Random Num
+var addrandom = function(){
 
-   // var $score = $('<div class="score">#score</div>');
-   // $('.container').append($score);
-   // var $heart = $('<div class="heart">Heart image</div>');
-   // $('.container').append($heart);
+    var randomNum = arr.push(Math.floor((Math.random() * 100) + 1));
+    selectNum = arr[0]
+    console.log(selectNum) //test
+    $('#randomNum').text(selectNum);
+}
+
+
 
 //To hide the START statement before starting game****
+//e.which = 13 is the press ENTER
+var counter = 0;
  $('body').keypress(function(e){
-    if(e.which == 13){
-    console.log('it s working')
-    $('.statement').hide()
-
-  }
-  beginGame()
+    if (counter < 1) {
+      if(e.which == 13){
+        console.log('it s working')
+        $('.statement').hide()
+      }
+      beginGame();
+    }
+    counter++;
  })
+
+
+  //  $('h1').click(function(){
+  //   beginGame()
+  //   console.log('it s working')
+  //   $('.statement').hide()
+  // });
+
 
 // var hidden = false;
 // console.log("hidden = " + hidden);
 
 
 //Displaying a start game with circletimer****
-
-
 var beginGame = function(){
  // var $score = $('<div class="score">#score</div>');
  // $('.container').append($score);
@@ -52,11 +70,15 @@ var beginGame = function(){
 } //end of beginGame
 
 //READY (Enter) to match game ****
+var clicked = false;
+//change this name of function..its too confusing. maybe like loading time
+//when you can, change it
 function ready(){
   $('body').keypress(function(e){
   if(e.which == 13){
      $('#memorize').hide();
      $('.heart').hide()
+     clicked = true;
   }
 
  })
@@ -66,15 +88,14 @@ function ready(){
 //TIMER test****
  function readyFunction(){
     setTimeout(function(){
-      $('#memorize').hide();
-      console.log('it s working (2)')
-      matchGame()
-    }, 5000);
-
-// i think maybe - container.hide happens after matchgame()
-// so then it hides
-// also it is a setINternval fucntion, so it happens every 3 seconds
-// is that what it is supposed to do
+      if (clicked === false) {
+        $('#memorize').hide();
+        console.log('timer in 5 seconds')
+        $('#randomNum').text(selectNum + ' 6');
+        matchGame()
+      }
+      clicked = false;
+    }, 5000); //ends set timeout
   }
 
 
@@ -84,82 +105,57 @@ function ready(){
    //$('.container').show();
    var $matchScreen = $('<div class="matchScreen"></div>');
    $('.container').append($matchScreen);
-   var $score = $('<div class="score">#score</div>');
-   $('.container').append($score);
-   var $heart = $('<div class="heart">Heart image</div>');
-   $('.container').append($heart);
+   var $score = $('<div id="score">#score</div>');
+   $('.container').prepend($score);
+   var $heart = $('<div id="heart">Heart image</div>');
+   $('.container').prepend($heart);
 
 }
 
 
 
-// var beginGame = function(){
-//    var $statement = $('<div class="statement"></div>')
-//    var $h2 = $('<h2>This is a working memory capacity measurement game.</h2>')
-//    var $h1 = $('<h1>START</h1>')
-//    $('body').append($statement);
-//    $($statement)append($h2);
-//    $($statement)append($h1);
-// }
-
-// beginGame();
-
-
-// var $start = $('.clockBox').text('START')
-// $('container').append($start)
-
-//Random Number for playing
-// function randomNum(){
-//   return Math.floor((Math.random() * 100) + 1);
-// }
-
-//$('#num').append(randomNum);
-
 //FUNCTION : Displaying a random in right click
-var addrandom = function(){
-  var  randomNum = Math.floor((Math.random() * 100) + 1);
-  $('#randomNum').text(randomNum);
-  }
-
-
-
-
-
-  // function readyFunction(){
-  //   setInterval(function(){
-  //      addrandom;
-  //   }, 3000);
-  // }
-
-  // //Match text for starting playing
-  // var $Match = $('#memorize').text('Match');
-  // $('#memorize').append($Match)
-
-  //Hide the heart symbol
-  //$('.heart').hide()
-
-  //Hide the Score Num
-  //$('.score').hide()
-
-  // var $Match = $('#memorize').text('Match');
-  // $('#memorize').append($Match)
-
-
-
-
+// var addrandom = function(){
+//   var  randomNum = Math.floor((Math.random() * 100) + 1);
+//   $('#randomNum').text(randomNum);
+//   }
 
 
 // the function for left and right keyboard
  $('body').keydown(function(e){
     if((e.keyCode || e.which)  == 37){
-      addrandom()
-
-
+      console.log('yes press')
+      compare()
+      // addrandom()
     }
     if((e.keyCode || e.which) == 39){
-      alert('you got left press!');
+      console.log('no press')
+      // compare()
     }
   })
+
+
+var score = 0;
+
+ function compare(){
+  var randomNum = $('#randomNum').text()
+  if (selectNum == selectNum){
+    alert('you got it(2)')
+    //console.log('they are the same.')
+    //if you said yes, you win, add point to score
+    score+= 1;
+    console.log(score)
+    //if you said no, you lose
+
+  }else{
+    console.log('different')
+    //if you said no, you win, add point to score
+    //if you said yes, you lose
+  }
+ }
+
+
+
 
 
 
