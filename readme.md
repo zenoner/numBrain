@@ -4,5 +4,10 @@ This is file with:
 3. installation instructions, 
 4. unsolved problems, 
 5. etc. #### Planning Phase
+6. 
+
+1. James Madison
+2. James Monroe
+3. John Quincy Adams
 
 
