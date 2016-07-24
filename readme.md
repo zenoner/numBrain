@@ -33,7 +33,7 @@ This is file with:
 
 **Pseudocode**
 
-Press the START to begin the game 
+  Press the START to begin the game 
    In memorize page, first random num appears 
         Circletimer will be disappear in 10 sec 
         or
