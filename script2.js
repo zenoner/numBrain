@@ -203,7 +203,6 @@ var generatedNumbers = function(){
     }
 
     if(round === gameRound.length-1){
-      var $memorize = $('<div><h1 id="memorize">memorize</h1></div>');
      $('.container').append($memorize);
       console.log("New LEVEL")
       round = 0; //reset
