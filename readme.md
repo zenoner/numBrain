@@ -9,7 +9,7 @@ This is file with:
 
 **Unit 1 project : Memory Game**
 
-**Technical Requirements**
+**Technical Requirements and Installation**
 
 1. Including separate HTML/CSS/Javascript files 
 2. Used jQuery and DOM manipulation 
