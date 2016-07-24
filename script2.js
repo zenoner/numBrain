@@ -176,13 +176,14 @@ var generatedNumbers = function(){
 
   function compare(answer){ //inside this function is where you have to come up logic
     if (answer === true){
+
        score+= 1;
        console.log(score)
        $('#score').text(score)
        console.log(true)
     }else{
        console.log(false)
-       score-= 1;
+       score+= 1;
        console.log(score)
        $('#score').text(score)
     }
