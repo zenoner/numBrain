@@ -44,16 +44,19 @@ div#clocktimer {
 
 #score {
   position: left;
-  float: right;
+  float: left;
   width: 80px;
   height: 80px;
   border: 1px red dotted;
   margin-left: 10px;
+  font-size: 65px;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
 }
 
 #heart {
   position: left;
-  float: left;
+  float: right;
   width: 80px;
   height: 80px;
   border: 1px red dotted;

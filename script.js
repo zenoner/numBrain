@@ -11,7 +11,19 @@ var addrandom = function(){
     var randomNum = arr.push(Math.floor((Math.random() * 100) + 1));
     selectNum = arr[0]
     console.log(selectNum) //test
-    $('#randomNum').text(selectNum);
+    //$('#randomNum').text(selectNum);
+}
+
+//test loop random num
+var arrRandom = []
+var randomNum = function (){
+  for (var i=0; i<10; i++){
+    arrRandom.push(Math.floor((Math.random() * 100) + 1));
+  }
+  arrRandom.toString();
+  console.log(arrRandom);
+  console.log(arrRandom[0]);
+  $('#randomNum').text(arrRandom[0]); //test
 }
 
 
@@ -26,6 +38,7 @@ var counter = 0;
         $('.statement').hide()
       }
       beginGame();
+
     }
     counter++;
  })
@@ -65,6 +78,8 @@ var beginGame = function(){
  addrandom()
  readyFunction()
  ready()
+ randomNum()
+ keyDown()
 
 
 } //end of beginGame
@@ -77,26 +92,42 @@ function ready(){
   $('body').keypress(function(e){
   if(e.which == 13){
      $('#memorize').hide();
-     $('.heart').hide()
-     clicked = true;
-  }
+     // $('.heart').hide()
+     // clicked = true;
+     matchGame()
 
+  }
+     stopTimeout()
  })
 
-}
+} //end of ready
+
+
 
 //TIMER test****
  function readyFunction(){
     setTimeout(function(){
-      if (clicked === false) {
+      if (clicked == false) {
         $('#memorize').hide();
         console.log('timer in 5 seconds')
-        $('#randomNum').text(selectNum + ' 6');
+        $('#randomNum').text(arrRandom[0] + ' here is start game');
         matchGame()
       }
       clicked = false;
     }, 5000); //ends set timeout
-  }
+
+  //    $('body').keydown(function(e){
+  //   if((e.keyCode || e.which)  == 37){
+  //     console.log('yes press')
+  //     compare()
+  //     // addrandom()
+  //   }
+  //   if((e.keyCode || e.which) == 39){
+  //     console.log('no press')
+  //     // compare()
+  //   }
+  // })
+} //end of readyFunction
 
 
 
@@ -105,7 +136,7 @@ function ready(){
    //$('.container').show();
    var $matchScreen = $('<div class="matchScreen"></div>');
    $('.container').append($matchScreen);
-   var $score = $('<div id="score">#score</div>');
+   var $score = $('<div id="score"></div>');
    $('.container').prepend($score);
    var $heart = $('<div id="heart">Heart image</div>');
    $('.container').prepend($heart);
@@ -122,7 +153,9 @@ function ready(){
 
 
 // the function for left and right keyboard
- $('body').keydown(function(e){
+
+var keyDown = function(){
+    $('body').keydown(function(e){
     if((e.keyCode || e.which)  == 37){
       console.log('yes press')
       compare()
@@ -133,18 +166,21 @@ function ready(){
       // compare()
     }
   })
+} // end of keyDown
+
 
 
 var score = 0;
 
  function compare(){
   var randomNum = $('#randomNum').text()
-  if (selectNum == selectNum){
+  if (arrRandom[0] == arrRandom[0]){
     alert('you got it(2)')
     //console.log('they are the same.')
     //if you said yes, you win, add point to score
     score+= 1;
     console.log(score)
+    $('#score').text(score)
     //if you said no, you lose
 
   }else{
@@ -153,6 +189,7 @@ var score = 0;
     //if you said yes, you lose
   }
  }
+
 
 
 
