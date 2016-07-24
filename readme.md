@@ -9,6 +9,13 @@ This is file with:
 
 **Unit 1 project : Memory Game**
 
+**Technical Requirements**
+
+1. Including separate HTML/CSS/Javascript files 
+2. Used jQuery and DOM manipulation 
+3. render the game in the browser 
+4. Design and implement logix for winning & visually display whether the user wins or loses
+
 **User Stories and MVP**
 
 1. User Stories : As a user, I play and measure my working memory capacity and to see how much my recall ability improved
@@ -23,5 +30,7 @@ This is file with:
 (https://wireframe.cc/HUUraN) (Play part)
 
 (https://wireframe.cc/ycMe1g) (Scoreboard part)
+
+
 
 
