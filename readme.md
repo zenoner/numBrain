@@ -31,6 +31,52 @@ This is file with:
 
 (https://wireframe.cc/ycMe1g) (Scoreboard part)
 
+**Pseudocode**
+
+Press the START to begin the game 
+   In memorize page, first random num appears 
+        Circletimer will be disappear in 10 sec 
+        or
+        Press Enter to start a game
+
+   In match page, first randomNum appears 
+        if (yes == matchNum) 
+           you got score by one 
+        else ( wrong match ) 
+           the screen blink red (meaning wrong match) 
+           You lose the score by one 
+        appear another two randomNum 
+           if ( no wrong match ) 
+               you get heart score by one
+           else (more than wrong match) 
+               you lose the heart score by one 
+      
+      In match page, matchNum and  randomNum appears 
+          If (yes == matchNum) 
+             you got score by one 
+          else (wrong match) 
+             the screen blink red (meaning wrong match) 
+             you lose the score by one 
+          appear another two randomNum
+               if ( no wrong match ) 
+               you get heart score by one
+           else (more than wrong match) 
+               you lose the heart score by one 
+       
+       In match page, two matchNum and  randomNum appears 
+          If (yes == matchNum) 
+             you got score by one 
+          else (wrong match) 
+             the screen blink red (meaning wrong match) 
+             you lose the score by one 
+          appear another two randomNum
+               if ( no wrong match ) 
+               you get heart score by one
+           else (more than wrong match) 
+               you lose the heart score by one 
+
+
+
 
 
 
