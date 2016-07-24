@@ -4,12 +4,13 @@ $(document).ready(function() {
   var gameRound = []
   var selectNum ;
   var round = 0; //this is our index for gameRound
+  var score = 0;
+  var heart = 3;
   //Random Num
   var addrandom = function(){
     recordNumbers.push(Math.floor((Math.random() * 100) + 1));
-    selectNum = recordNumbers[0]
-    console.log(selectNum) //test
-    $('#randomNum').text(selectNum); //Like here, why dont we do just do that?
+    console.log(recordNumbers);
+    $('#randomNum').text(recordNumbers); //Like here, why dont we do just do that?
   }
 
 
@@ -47,6 +48,7 @@ var beginGame = function(){
    ////
 
    //in my code, I put a game loop. this where the game starts
+   //upDateTime() //Tried to add the sec clock
    loopGame()
    //////
   } //end of beginGame
@@ -57,7 +59,7 @@ var beginGame = function(){
     gameRound = correctAndWrong() //this is outputting, but nothing is being stored. how can wefix it?
     readyFunction()
     ready()
-    keyDown()
+    // keyDown()
 
   }
 
@@ -96,8 +98,9 @@ var beginGame = function(){
 
 //the Match game page **** this is a match game where I can add random function
   function matchGame(){
-  var $firstRound = gameRound[0]
-  console.log(gameRound)
+  var $firstRound = gameRound[round]
+  console.log(round, 'this is round')
+  console.log(gameRound, 'this is gameRound')
   $('#randomNum').text($firstRound);
   }
 
@@ -111,8 +114,10 @@ var setUpInterface = function(){
     $('.container').append($matchScreen);
     var $score = $('<div id="score"></div>');
     $('.container').prepend($score);
-    var $heart = $('<div id="heart">Heart image</div>');
+    $('#score').text(score)
+    var $heart = $('<div id="heart"></div>');
     $('.container').prepend($heart);
+    $('#heart').text(heart);
 }
 
 var generatedNumbers = function(){
@@ -135,6 +140,7 @@ var generatedNumbers = function(){
     function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
+//
     // While there remain elements to shuffle...
     while (0 !== currentIndex) {
 
@@ -158,37 +164,77 @@ var generatedNumbers = function(){
 
 
 // the function for left and right keyboard
-  var keyDown = function(){
+  // var keyDown = function(){
     $('body').keydown(function(e){
     if((e.keyCode || e.which)  == 37){
-      console.log('yes press')
+      // console.log('yes press')
       compare(true)
       // addrandom()
     }
     if((e.keyCode || e.which) == 39){
-      console.log('no press')
+      // console.log('no press')
       compare(false)
     }
     })
-  } // end of keyDown
+  // } // end of keyDown
 
-  var score = 0;
 
-  function compare(answer){ //inside this function is where you have to come up logic
-    if (answer === true){
-
-       score+= 1;
-       console.log(score)
-       $('#score').text(score)
-       console.log(true)
-    }else{
-       console.log(false)
-       score+= 1;
-       console.log(score)
-       $('#score').text(score)
+  function compare(userInput){
+    console.log(userInput) //this is user's guess
+    //true = 'I think it is yes'
+    //false = 'I think it is no'
+    if(recordNumbers.includes(gameRound[round]) == userInput){ //if use gets right answer, user gain score
+      score += 1;
+      console.log(score)
+      $('#score').text(score)
+      console.log('correct')
+    } else { //if user gets wrong answer, user lose heart and score
+      heart -= 1;
+      score -= 1;
+      console.log('wrong')
+      console.log('I have heart:', heart)
+      console.log(score)
+      $('#score').text(score)
+      $('#heart').text(heart);
     }
+
+    if(heart<=0){ //check if it is game over yet
+      alert('GAME OVER');
+    }
+
+    if(round === gameRound.length-1){
+      var $memorize = $('<div><h1 id="memorize">memorize</h1></div>');
+     $('.container').append($memorize);
+      console.log("New LEVEL")
+      round = 0; //reset
+      loopGame()
+    } else{
+      //next round
+      round ++
+      matchGame()
+    }
+
   }
-});
+
+
+//////
+// var time = new Date().getTime();
+// var timeDown = 10;
+
+// function upDateTime(){
+//   var cTime = new Date().getTime();
+//   var diff = cTime - time;
+//   var seconds = timeDown - Math.floor(diff/1000);
+//   if (seconds>=0){
+//     $('.circletimer').text(seconds<10 ? "0" + seconds:seconds);
+//   }
+// }
+//upDateTime();
+//ar counter = setInterval(upDateTime,500);
+
+
+}); //end of jQuery
+
 
 
 

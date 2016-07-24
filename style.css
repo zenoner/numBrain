@@ -61,6 +61,9 @@ div#clocktimer {
   height: 80px;
   border: 1px red dotted;
   margin-right: 10px;
+  font-size: 65px;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
 }
 
 #match h1 {
