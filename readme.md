@@ -75,7 +75,7 @@ This is file with:
            else (more than wrong match) 
                you lose the heart score by one 
 
-**Unfinised lists
+**Unfinised lists**
 
 1. to build a scoreboard 
 2. to install the 10 second timer 
