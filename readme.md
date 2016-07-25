@@ -74,11 +74,18 @@ This is file with:
                you get heart score by one
            else (more than wrong match) 
                you lose the heart score by one 
+               
+**Chartflow Work image**
+![Charflow Work Image](https://i.imgsafe.org/6139c16f42.jpg)
 
+<<<<<<< HEAD
 **Chartflow Work image**
 ![Charflow Work Image](https://i.imgsafe.org/6139c16f42.jpg)
 
 **Unfinised lists
+=======
+**Unfinised lists**
+>>>>>>> 2bf64e1fb49207e64426db70936b826e2aec6236
 
 1. to build a scoreboard 
 2. to install the 10 second timer 
