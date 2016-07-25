@@ -1,12 +1,13 @@
 $(document).ready(function() {
 //Test for empty recordNumbersay
+//Variable groups
   var recordNumbers = []
   var gameRound = []
   var selectNum ;
   var round = 0; //this is our index for gameRound
   var score = 0;
   var heart = 3;
-  //Random Num
+  //Recording a random numbers
   var addrandom = function(){
     recordNumbers.push(Math.floor((Math.random() * 100) + 1));
     console.log(recordNumbers);
@@ -31,6 +32,7 @@ $(document).ready(function() {
 
 
 //Displaying a start game with circletimer****
+//Beginning to memorize the numbers
 var beginGame = function(){
   ////
    var $memorize = $('<div><h1 id="memorize">memorize</h1></div>');
@@ -39,7 +41,7 @@ var beginGame = function(){
    $('.container').append($randomNum); //this is where gameloop can do that job
    //$('#randomNum').text(selectNum); //look at this. seletNum is blank at the moment
    var $clockBox = $('<div class="clockBox"></div>');
-   var $ready = $('<div id="clickReady">ready</di>');
+   var $ready = $('<div id="clickReady"></di>');
    $('.container').append($ready)
    //ADD clocktimer****
    var $circleTimer = $('<div class="circleTimer"></div>');
@@ -47,7 +49,7 @@ var beginGame = function(){
    $('.container').append($circleTimer);
    ////
 
-   //in my code, I put a game loop. this where the game starts
+   //This is where the game start by calling function
    //upDateTime() //Tried to add the sec clock
    loopGame()
    //////
@@ -64,10 +66,7 @@ var beginGame = function(){
   }
 
 
-
-
-
-//READY (Enter) to match game ****
+//READY (by pressing ENTER) to match game ****
   var clicked = false;
   function ready(){
     $('body').keypress(function(e){
@@ -77,23 +76,24 @@ var beginGame = function(){
        clicked = true;
        setUpInterface()
        matchGame()
+
     }
    })
   }
 
-  //TIMER test****
+  //READY (by using setTimeout() in 10 sec)
   function readyFunction(){
     setTimeout(function(){ //wait for 5 seconds for user to remember the number
       if (clicked === false) {
         $('#memorize').hide();
-        console.log('timer in 5 seconds')
+        console.log('timer in 10 seconds')
         setUpInterface()
         matchGame()
+
       }
       clicked = false;
-    }, 5000); //ends set timeout
+    }, 10000); //ends set timeout
   }
-
 
 
 //the Match game page **** this is a match game where I can add random function
@@ -104,6 +104,7 @@ var beginGame = function(){
   $('#randomNum').text($firstRound);
   }
 
+//The interface of the game
 var setUpInterface = function(){
   //$('.container').show();
     $('.matchScreen').remove();
@@ -120,6 +121,8 @@ var setUpInterface = function(){
     $('#heart').text(heart);
 }
 
+////The includes() method determines whether an array includes a certain element,
+//returning true or false
 var generatedNumbers = function(){
   var lengthOfRecordNumber =  recordNumbers.length
   var wrongNumbers = [];
@@ -134,9 +137,9 @@ var generatedNumbers = function(){
   }
   return wrongNumbers
 }
-// to combine two arrays and random  it
+// correctAndWrong () to combine two arrays and random  it
   var correctAndWrong = function(){
-    //from website source
+    //This borrowed from the website, stackoverflow.com
     function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -178,7 +181,7 @@ var generatedNumbers = function(){
     })
   // } // end of keyDown
 
-
+//to compare
   function compare(userInput){
     console.log(userInput) //this is user's guess
     //true = 'I think it is yes'
@@ -214,6 +217,15 @@ var generatedNumbers = function(){
     }
 
   }
+
+// var i = 10;
+//   while (i > 0){
+//     setTimeout(function(){
+//         var $circleTimer = $('<div class="circleTimer"></div>');
+//      //$(clockBox).append($circleTimer);
+//      $('.container').append($circleTimer);
+//     },10000);
+// }
 
 
 //////

@@ -75,6 +75,15 @@ This is file with:
            else (more than wrong match) 
                you lose the heart score by one 
 
+**Unfinised lists
+
+1. to build a scoreboard 
+2. to install the 10 second timer 
+3. to install game introduction 
+4. to put a labels: scores and hearts 
+5. to red light out when the number is wrong 
+6. to add css styling 
+
 
 
 

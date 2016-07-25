@@ -1,6 +1,6 @@
 body {
   background-color: #FFF8DC;
-  border: 1px red solid;
+
 }
 
 h1 {
@@ -47,9 +47,9 @@ div#clocktimer {
   float: left;
   width: 80px;
   height: 80px;
-  border: 1px red dotted;
+  /*border: 1px red dotted;*/
   margin-left: 10px;
-  font-size: 65px;
+  font-size: 80px;
   text-align: center;
   font-family: 'Open Sans', sans-serif;
 }
@@ -59,9 +59,9 @@ div#clocktimer {
   float: right;
   width: 80px;
   height: 80px;
-  border: 1px red dotted;
+  /*border: 1px red dotted;*/
   margin-right: 10px;
-  font-size: 65px;
+  font-size: 80px;
   text-align: center;
   font-family: 'Open Sans', sans-serif;
 }
@@ -81,7 +81,7 @@ div.circleTimer {
   height: 200px;
   margin-right: auto;
   margin-left: auto;
-  border: 1px red dotted;
+  /*border: 1px red dotted;*/
   align-items: center;
 }
 
