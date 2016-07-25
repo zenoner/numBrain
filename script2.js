@@ -1,13 +1,14 @@
 $(document).ready(function() {
-//Test for empty recordNumbersay
+//Testing for empty recordNumbersay
 //Variable groups
-  var recordNumbers = []
-  var gameRound = []
+  var recordNumbers = [] //Random numbers to memorize
+  var gameRound = [] //Generating Random numbers
   var selectNum ;
   var round = 0; //this is our index for gameRound
-  var score = 0;
-  var heart = 3;
-  //Recording a random numbers
+  var score = 0; //Starting 0 for score
+  var heart = 3; //Three hearts life  give a chance when you get wrong number
+
+//Recording a random numbers to memorize
   var addrandom = function(){
     recordNumbers.push(Math.floor((Math.random() * 100) + 1));
     console.log(recordNumbers);
@@ -31,10 +32,9 @@ $(document).ready(function() {
 
 
 
-//Displaying a start game with circletimer****
-//Beginning to memorize the numbers
+//Displaying a start game with circletimer(not including)****
+//Beginning game to memorize the numbers
 var beginGame = function(){
-  ////
    var $memorize = $('<div><h1 id="memorize">memorize</h1></div>');
    $('.container').append($memorize);
    var $randomNum = $('<div><h1 id="randomNum"></h1></div>');
@@ -47,10 +47,7 @@ var beginGame = function(){
    var $circleTimer = $('<div class="circleTimer"></div>');
    //$(clockBox).append($circleTimer);
    $('.container').append($circleTimer);
-   ////
-
-   //This is where the game start by calling function
-   //upDateTime() //Tried to add the sec clock
+//This is where the game start by calling function, loopGame()
    loopGame()
    //////
   } //end of beginGame
@@ -59,14 +56,15 @@ var beginGame = function(){
     addrandom() //we generated the numbers the user need to remmebr
     gameRound = generatedNumbers() //we generate random 20 numbers
     gameRound = correctAndWrong() //this is outputting, but nothing is being stored. how can wefix it?
-    readyFunction()
-    ready()
+    readyFunction() //10 secound timer before game
+    ready() //Press Enter before game
     // keyDown()
 
   }
 
 
 //READY (by pressing ENTER) to match game ****
+//e.which = 13 is the press ENTER
   var clicked = false;
   function ready(){
     $('body').keypress(function(e){
@@ -74,14 +72,14 @@ var beginGame = function(){
       $('#memorize').hide();
       //  $('.heart').hide()
        clicked = true;
-       setUpInterface()
+       setUpInterface() //HTML user interface
        matchGame()
 
     }
    })
   }
 
-  //READY (by using setTimeout() in 10 sec)
+//READY (by using setTimeout() in 10 sec)
   function readyFunction(){
     setTimeout(function(){ //wait for 5 seconds for user to remember the number
       if (clicked === false) {
@@ -96,7 +94,8 @@ var beginGame = function(){
   }
 
 
-//the Match game page **** this is a match game where I can add random function
+//the Match game page ****
+//this is a match game where I can add random function
   function matchGame(){
   var $firstRound = gameRound[round]
   console.log(round, 'this is round')
@@ -104,7 +103,7 @@ var beginGame = function(){
   $('#randomNum').text($firstRound);
   }
 
-//The interface of the game
+//The interface(HTML) of the game
 var setUpInterface = function(){
   //$('.container').show();
     $('.matchScreen').remove();
@@ -137,37 +136,38 @@ var generatedNumbers = function(){
   }
   return wrongNumbers
 }
-// correctAndWrong () to combine two arrays and random  it
-  var correctAndWrong = function(){
-    //This borrowed from the website, stackoverflow.com
-    function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+// correctAndWrong () to combine two arrays, recordNumber and gameRound and random  it
+var correctAndWrong = function(){
+  //This borrowed from the website, stackoverflow.com
+  function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
 
 //
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
 
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
 
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
 
-      return array;
-    }
-    var combineTwoArrays = recordNumbers.concat(gameRound);
-    return shuffle(combineTwoArrays);
-    } // end of correctAndWrong
+    return array;
+  }
+  var combineTwoArrays = recordNumbers.concat(gameRound);
+  return shuffle(combineTwoArrays);
+  } // end of correctAndWrong
 
 
 
 
 // the function for left and right keyboard
-  // var keyDown = function(){
+//e.which = 37 is the press left
+//e.which = 39 is the press right
     $('body').keydown(function(e){
     if((e.keyCode || e.which)  == 37){
       // console.log('yes press')
@@ -183,17 +183,17 @@ var generatedNumbers = function(){
 
 //to compare
   function compare(userInput){
-    console.log(userInput) //this is user's guess
+    console.log(userInput) //this is a user's guess
     //true = 'I think it is yes'
     //false = 'I think it is no'
     if(recordNumbers.includes(gameRound[round]) == userInput){ //if use gets right answer, user gain score
-      score += 1;
+      score += 1; //score gains
       console.log(score)
       $('#score').text(score)
       console.log('correct')
     } else { //if user gets wrong answer, user lose heart and score
-      heart -= 1;
-      score -= 1;
+      heart -= 1; //decreased heart
+      score -= 1; //decreased score
       console.log('wrong')
       console.log('I have heart:', heart)
       console.log(score)
@@ -202,7 +202,7 @@ var generatedNumbers = function(){
     }
 
     if(heart<=0){ //check if it is game over yet
-      alert('GAME OVER');
+      alert('GAME OVER!! Your level score is ' + score);
     }
 
     if(round === gameRound.length-1){
@@ -217,32 +217,6 @@ var generatedNumbers = function(){
     }
 
   }
-
-// var i = 10;
-//   while (i > 0){
-//     setTimeout(function(){
-//         var $circleTimer = $('<div class="circleTimer"></div>');
-//      //$(clockBox).append($circleTimer);
-//      $('.container').append($circleTimer);
-//     },10000);
-// }
-
-
-//////
-// var time = new Date().getTime();
-// var timeDown = 10;
-
-// function upDateTime(){
-//   var cTime = new Date().getTime();
-//   var diff = cTime - time;
-//   var seconds = timeDown - Math.floor(diff/1000);
-//   if (seconds>=0){
-//     $('.circletimer').text(seconds<10 ? "0" + seconds:seconds);
-//   }
-// }
-//upDateTime();
-//ar counter = setInterval(upDateTime,500);
-
 
 }); //end of jQuery
 
