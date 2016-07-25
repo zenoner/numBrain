@@ -78,14 +78,7 @@ This is file with:
 **Chartflow Work image**
 ![Charflow Work Image](https://i.imgsafe.org/6139c16f42.jpg)
 
-<<<<<<< HEAD
-**Chartflow Work image**
-![Charflow Work Image](https://i.imgsafe.org/6139c16f42.jpg)
-
-**Unfinised lists
-=======
 **Unfinised lists**
->>>>>>> 2bf64e1fb49207e64426db70936b826e2aec6236
 
 1. to build a scoreboard 
 2. to install the 10 second timer 
